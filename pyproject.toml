@@ -1,0 +1,33 @@
+[project]
+name = "smigiel-prod"
+version = "0.1.0"
+description = "Code necessary to reproduce the ŚMIGIEL dataset"
+readme = "README.md"
+requires-python = ">=3.10.4"
+dependencies = [
+    "datasets>=4.8.4",
+    "kagglehub>=1.0.0",
+    "pandas>=2.3.3",
+    "lambo",
+    "langdetect==1.0.9",
+    "python-dotenv>=1.2.2",
+]
+
+[tool.uv.sources]
+lambo = {index = "lambo"}
+
+
+[[tool.uv.index]]
+name = 'lambo'
+url = 'https://pypi.clarin-pl.eu/'
+explicit=true
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "pytest>=8.0.0",
+    "ruff>=0.15.9",
+]
