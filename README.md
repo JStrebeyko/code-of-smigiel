@@ -47,7 +47,7 @@ The available commands map directly to the pipeline stages shown in [The procedu
 | 4     | `generate`         | Dispatches Slurm jobs for LLM inference on the cluster. Generates one batch per `(model, slice)` combination. | `--input_file`, `--models`, `--batched`, `--walltime`, `--name` |
 | 5     | `forge-tests`      | After postprocessing, composes the final `test_A` and `test_B` from `alpha`, `beta`, and `gamma` subsets.     |
 
-Postprocessing (cleaning the cluster outputs into `base`, `beta`, and `gamma` splits) is currently driven by `postprocessing/postprocess.py` directly rather than through the CLI.
+Postprocessing (cleaning the cluster outputs into `train`, `alpha`, `beta`, and `gamma` splits) is currently driven by `postprocessing/postprocess.py` directly rather than through the CLI.
 
 ### Example: full local preprocessing run
 
