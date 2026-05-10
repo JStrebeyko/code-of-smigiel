@@ -128,18 +128,18 @@ flowchart LR
 
     %% ── Gamma pipeline ───────────────────────────────────────────────────────
     GIG -->|"× 8 models\n× strategies"| GGEN["gamma prod"]
-    GGEN -->|"postprocessing"| gamma_post(["gamma\n19 914"])
+    GGEN -->|"postprocessing"| gamma_post(["γ\n19 914"])
 
     %% ── Beta pipeline ────────────────────────────────────────────────────────
     dv -->|"llama-lg\n× strategies"| bgen["llama-lg output"]
-    bgen -->|"postprocessing"| beta_post(["beta\n4 356"])
+    bgen -->|"postprocessing"| beta_post(["β\n4 356"])
 
     %% ── Alpha ────────────────────────────────────────────────────────────────
-    ts --> alpha(["alpha\n4 505"])
+    ts --> alpha(["α\n4 505"])
 
     %% ── Test assembly ────────────────────────────────────────────────────────
-    alpha & beta_post & gamma_post -->|"½ · ⅓ · ⅓\ninterleaved"| TA(["test_A\n10 343"])
-    alpha & beta_post & gamma_post -->|"½ · ⅔ · ⅔\ninterleaved"| TB(["test_B\n18 432"])
+    alpha & beta_post & gamma_post -->|"½ · ⅓ · ⅓\ninterleaved"| TA(["A\n10 343"])
+    alpha & beta_post & gamma_post -->|"½ · ⅔ · ⅔\ninterleaved"| TB(["B\n18 432"])
 
 ```
 
