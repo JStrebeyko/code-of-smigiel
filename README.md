@@ -14,7 +14,9 @@ Specifically, the code of this repo can
 - group, balance and sample the data
 - perform customizable cleaning on the generated data
 
-The code in the repository can be divided into two parts, according to the environment in which they are intended to be run.
+## Architecture
+
+The code can be broken up into two main parts:
 
 1. the CLI, offering the basic data transformation steps. It covers all the data preparation and postprocessing steps, along with utilities for balancing the domains, filtering the content and composing the resulting dataset. Intended to be run locally.
 2. the inference script, focusing on cluster configuration, LLM management and generation. It is driven by dynamically composed Slurm configuration file and is intended for the cluster.
@@ -52,29 +54,29 @@ flowchart LR
     subgraph SRC["Original Sources"]
         direction TB
         subgraph DW["Wikipedia"]
-            wiki@{ shape: doc, label: "wiki\n286 513" }
+            wiki@{ shape: doc, label: "Polish Wikipedia\n286 513" }
         end
         subgraph DL["Literature"]
-            plsc@{ shape: doc, label: "plsc\n12 000" }
-            cb@{ shape: doc, label: "coursebooks\n1 288" }
-            cl@{ shape: doc, label: "classics\n27 287" }
+            plsc@{ shape: doc, label: "PLSC\n(scientific abstracts)\n12 000" }
+            cb@{ shape: doc, label: "Open Coursebooks PL\n1 288" }
+            cl@{ shape: doc, label: "Polish Classics Corpus\n27 287" }
         end
-        subgraph DS["social"]
-            tw@{ shape: doc, label: "twitter\n17 648" }
-            wk@{ shape: doc, label: "wykop\n14 450" }
+        subgraph DS["Social Media"]
+            tw@{ shape: doc, label: "TwitterEmo\n17 648" }
+            wk@{ shape: doc, label: "BAN-PL (Wykop)\n14 450" }
         end
-        subgraph DR["reviews"]
-            ph@{ shape: doc, label: "polemo_hotels\n3 951" }
-            pm@{ shape: doc, label: "polemo_medicine\n3 272" }
-            pp@{ shape: doc, label: "polemo_products\n483" }
-            pc@{ shape: doc, label: "polemo_courses\n475" }
-            al@{ shape: doc, label: "allegro\n10 715" }
-            fw@{ shape: doc, label: "filmweb\n55 863" }
-            pr@{ shape: doc, label: "pmrd\n12 009" }
+        subgraph DR["Reviews"]
+            ph@{ shape: doc, label: "PolEmo 2.0 — Hotels\n3 951" }
+            pm@{ shape: doc, label: "PolEmo 2.0 — Medicine\n3 272" }
+            pp@{ shape: doc, label: "PolEmo 2.0 — Products\n483" }
+            pc@{ shape: doc, label: "PolEmo 2.0 — Courses\n475" }
+            al@{ shape: doc, label: "Allegro Reviews\n10 715" }
+            fw@{ shape: doc, label: "FilmwebPlus\n55 863" }
+            pr@{ shape: doc, label: "Polish Movie Reviews\n(PMRD)\n12 009" }
         end
-        subgraph DG["gamma  (new data)"]
-            wn@{ shape: doc, label: "wikinews\n44 366" }
-            gv@{ shape: doc, label: "gov\n67 628" }
+        subgraph DG["News & Government  (new data)"]
+            wn@{ shape: doc, label: "Polish Wikinews\n44 366" }
+            gv@{ shape: doc, label: "ParlaMint-PL 5.0\n(Sejm + Senat)\n67 628" }
         end
     end
 
