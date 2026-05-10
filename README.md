@@ -44,16 +44,17 @@ uv run cli.py preprocess --datasets wiki
 ## The procedure
 
 ŚMIGIEL data is built upon 12 datasets of human-written texts in Polish. Each of them is processed in a roughly the same way:
+
 ```mermaid
 flowchart LR
 
     %% ── Source datasets grouped by domain ───────────────────────────────────
-    subgraph SRC["Source Datasets"]
+    subgraph SRC["Original Sources"]
         direction TB
-        subgraph DW["wiki"]
+        subgraph DW["Wikipedia"]
             wiki@{ shape: doc, label: "wiki\n286 513" }
         end
-        subgraph DL["lit"]
+        subgraph DL["Literature"]
             plsc@{ shape: doc, label: "plsc\n12 000" }
             cb@{ shape: doc, label: "coursebooks\n1 288" }
             cl@{ shape: doc, label: "classics\n27 287" }
@@ -114,8 +115,7 @@ flowchart LR
     %% ── Test assembly ────────────────────────────────────────────────────────
     alpha & beta_post & gamma_post -->|"½ · ⅓ · ⅓\ninterleaved"| TA(["test_A\n10 343"])
     alpha & beta_post & gamma_post -->|"½ · ⅔ · ⅔\ninterleaved"| TB(["test_B\n18 432"])
-```
 
-raw -> preprocessing -> prefix extraction and prompt creation -> balancing within domains -> LLM completion by each of the models -> postprocessing of the ouput, inc. final dataset composition
+```
 
 TBC
