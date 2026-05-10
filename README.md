@@ -32,6 +32,33 @@ uv run cli.py [command] [...options]
 uv run cli.py preprocess --datasets wiki
 ```
 
+## Commands
+
+The available commands map directly to the pipeline stages shown in [The procedure](#the-procedure). They are intended to be run roughly in this order:
+
+| Stage | Command            | What it does                                                                                                  | Key options                                                     |
+| ----- | ------------------ | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| 0     | `test`             | Lists all known source datasets — useful as a sanity check that every loader is wired up.                     | —                                                               |
+| 1a    | `extract`          | Per dataset: downloads the raw source (if not cached) and extracts text prefixes via the LAMBO segmenter.     | `--datasets`                                                    |
+| 1b    | `prompt`           | Per dataset: builds Polish-language LLM prompts from the extracted prefixes.                                  | `--datasets`                                                    |
+| 1     | `preprocess`       | Convenience: runs `extract` and `prompt` in one go.                                                           | `--datasets`                                                    |
+| 2     | `assemble-domains` | Aggregates per-dataset preprocessed data into per-domain pools and samples them down.                         | `--domains`, `--cap`                                            |
+| 3     | `compose-input`    | Composes the final `generation_input.csv` — the single CSV consumed by the cluster inference jobs.            | `--domains`, `--output_file`                                    |
+| 4     | `generate`         | Dispatches Slurm jobs for LLM inference on the cluster. Generates one batch per `(model, slice)` combination. | `--input_file`, `--models`, `--batched`, `--walltime`, `--name` |
+| 5     | `forge-tests`      | After postprocessing, composes the final `test_A` and `test_B` from `alpha`, `beta`, and `gamma` subsets.     |
+
+Postprocessing (cleaning the cluster outputs into `base`, `beta`, and `gamma` splits) is currently driven by `postprocessing/postprocess.py` directly rather than through the CLI.
+
+### Example: full local preprocessing run
+
+```shell
+uv run cli.py test                                           # 0  verify
+uv run cli.py preprocess --datasets wiki plsc twitter        # 1  extract + prompt per dataset
+uv run cli.py assemble-domains --domains lit reviews         # 2  build domain pools
+uv run cli.py compose-input --domains lit reviews \
+                            --output_file generation_input.csv   # 3  compose CSV
+```
+
 ## Architecture
 
 The code can be broken two main parts, both available through the CLI:
@@ -115,6 +142,8 @@ flowchart LR
     alpha & beta_post & gamma_post -->|"½ · ⅔ · ⅔\ninterleaved"| TB(["test_B\n18 432"])
 
 ```
+
+## The dataset
 
 ### Source Data
 

@@ -57,12 +57,12 @@ elif args.command == 'prompt':
       dataset.promptify()
       dataset.update_preprocessed()
       
-elif args.command == 'prepare':
+elif args.command == 'assemble-domains':
     from utils.domains import prepare_domain
     for domain in args.domains:
       prepare_domain(domain, args.cap)
 
-elif args.command == 'output':
+elif args.command == 'compose-input':
     from utils.fileio import output_domains
     output_domains(args.domains, args.cap, args.output_file)
 
