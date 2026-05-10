@@ -83,11 +83,11 @@ flowchart LR
     DL -->|"preprocess\n→ pool 12 000"| dl_d["lit\n12 000"]
     DS -->|"preprocess\n→ pool 12 000"| ds_d["social\n12 000"]
     DR -->|"preprocess\n→ pool 20 657\n↓ sample 12 000"| dr_d["reviews\n12 000"]
-    DG -->|"preprocess\n→ pool 111 994"| dg_d["gamma\n111 994"]
+    DG -->|"preprocess\n→ pool 111 994"| GIG[/"gamma_input\n111 994 prompts"/]
 
     %% ── Generation inputs ────────────────────────────────────────────────────
     dw_d & dl_d & ds_d & dr_d --> GI[/"generation_input\n48 000 prompts\n12 000 × 4 domains"/]
-    dg_d --> GIG[/"gamma_input\n111 994 prompts"/]
+    %% dg_d --> GIG[/"gamma_input\n111 994 prompts"/]
 
     %% ── Main generation pipeline ─────────────────────────────────────────────
     GI -->|"× 7 models\n× strategies"| PROD["prod\n336 000\n84 000 / domain"]
