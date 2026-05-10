@@ -16,9 +16,9 @@ Specifically, the code of this repo can
 
 ## Architecture
 
-The code can be broken up into two main parts:
+The code can be broken two main parts, both available through the CLI:
 
-1. the CLI, offering the basic data transformation steps. It covers all the data preparation and postprocessing steps, along with utilities for balancing the domains, filtering the content and composing the resulting dataset. Intended to be run locally.
+1. comprehensive pipelines run with `[COMMAND]` argument. Covers from data retrieval to postprocessing and final composition, along with utilities for balancing the domains, filtering the content and composing the resulting dataset. Intended to be run locally.
 2. the inference script, focusing on cluster configuration, LLM management and generation. It is driven by dynamically composed Slurm configuration file and is intended for the cluster.
 
 ## Quickstart
