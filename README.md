@@ -218,3 +218,15 @@ The subsets contribute to the two resulting test groups through a round-robin as
 ## About the Shared Task
 
 [Śmigiel](https://github.com/poleval/2025-smigiel) is a Shared Task on Machine-Generated-Text (MGT) Detection, which for the first time took place as part of [PolEval 2025](http://poleval.pl/tasks/task1) competition organized by [The Linguistic Engineering (LE) Group](https://zil.ipipan.waw.pl/), part of the Department of Artificial Intelligence at the Institute of Computer Science, Polish Academy of Sciences (IPI PAN) <!-- TODO: add a sentence on the participants? -->
+
+## Citation
+
+```
+@article{
+  title={Śmigiel Dataset: Laying Foundations for Investigating Machine-Generated Text Detection in Polish},
+  author={Jakub Strebeyko, Alina Wróblewska, Piotr Przybyła},
+  journal={LREC 2025},
+  year={2025},
+  doi={10.63317/3p7ghe9pfm8v}
+}
+```
