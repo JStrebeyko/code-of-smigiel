@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository shows the steps involved in creation of [ŚMIGIEL Dataset](HF), used in [PolEval 2025 Task 1: Spotting Machine-Generated Text from LLMs for Polish](https://github.com/poleval/2025-smigiel).
+This repository shows the steps involved in creation of [ŚMIGIEL Dataset](HF), used in [PolEval 2025 Task 1: Spotting Machine-Generated Text from LLMs for Polish](https://github.com/poleval/2025-smigiel). Read [the original paper](https://lrec.elra.info/lrec2026-main-828).
 
 Specifically, the code of this repo can
 
