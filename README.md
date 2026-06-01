@@ -70,7 +70,7 @@ The code can be broken two main parts, both available through the CLI:
 
 ŚMIGIEL data is built upon 12 datasets of human-written texts in Polish. Each of them is processed in a roughly the same way:
 
-![Data flow diagram](figures/diagram2.svg)
+![Data flow diagram](figures/data_flow.svg)
 
 ## The dataset
 
